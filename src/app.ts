@@ -1,14 +1,22 @@
+import 'dotenv/config';
 import express from 'express';
+import db from './db';
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const startServer = async () => {
+  await db;
 
-app.use(express.json());
+  const app = express();
+  const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+  app.use(express.json());
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
-});
+  app.get('/', (req, res) => {
+    res.send('Hello, World!');
+  });
+
+  app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+  });
+};
+
+startServer();
