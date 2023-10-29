@@ -67,6 +67,9 @@ router.post('/:id/check-in', async (req, res) => {
     }
 
     // TODO: Check if employee has already checked in today
+    if (employee.checkInTime) {
+      return res.status(400).json({ error: 'Employee already checked in' });
+    }
 
     employee.checkInTime = new Date();
     if (comment) {
