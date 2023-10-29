@@ -4,7 +4,7 @@ import Employee from '../models/Employee';
 const router = Router();
 
 // Create employee
-router.post('/create-employee', async (req, res) => {
+router.post('/create', async (req, res) => {
   try {
     const { lastName, firstName, department } = req.body;
 
@@ -23,7 +23,7 @@ router.post('/create-employee', async (req, res) => {
 });
 
 // Get all employees
-router.get('/employees', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const employees = await Employee.find({});
     res.json(employees);
@@ -33,7 +33,7 @@ router.get('/employees', async (req, res) => {
 });
 
 // Get employee by date
-router.get('/employees/by-date', async (req, res) => {
+router.get('/by-date', async (req, res) => {
   try {
     const { date } = req.query;
     if (!date) {
@@ -50,6 +50,31 @@ router.get('/employees/by-date', async (req, res) => {
     });
 
     res.json(employees);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Employee check in
+router.post('/:id/check-in', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { comment } = req.body;
+
+    const employee = await Employee.findById(id);
+    if (!employee) {
+      return res.status(404).json({ error: 'Employee not found' });
+    }
+
+    // TODO: Check if employee has already checked in today
+
+    employee.checkInTime = new Date();
+    if (comment) {
+      employee.comments.push(`Check-in: ${comment}`);
+    }
+
+    await employee.save();
+    res.json(employee);
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }

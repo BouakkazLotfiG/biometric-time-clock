@@ -20,7 +20,7 @@ const startServer = async () => {
   });
 
   // Routes
-  app.use('/api', employeeRoutes);
+  app.use('/employees', employeeRoutes);
 
   app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
