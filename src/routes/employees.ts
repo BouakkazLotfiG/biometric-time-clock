@@ -83,4 +83,38 @@ router.post('/:id/check-in', async (req, res) => {
   }
 });
 
+// Employee check out
+router.post('/:id/check-out', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { comment } = req.body;
+
+    const employee = await Employee.findById(id);
+    if (!employee) {
+      return res.status(404).json({ error: 'Employee not found' });
+    }
+
+    if (!employee.checkInTime) {
+      return res.status(400).json({ error: 'Employee has not checked in' });
+    }
+
+    if (employee.checkOutTime) {
+      return res.status(400).json({ error: 'Employee already checked out' });
+    }
+
+    employee.checkOutTime = new Date();
+    if (comment) {
+      employee.comments.push(`Check-out: ${comment}`);
+    }
+
+    // TODO: Calculate hours worked
+    const hoursWorked = 5;
+
+    await employee.save();
+    res.json({ ...employee.toObject(), hoursWorked });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 export default router;
