@@ -3,6 +3,25 @@ import Employee from '../models/Employee';
 
 const router = Router();
 
+// Create employee
+router.post('/create-employee', async (req, res) => {
+  try {
+    const { lastName, firstName, department } = req.body;
+
+    const newEmployee = new Employee({
+      lastName,
+      firstName,
+      department,
+      dateCreated: new Date(),
+    });
+
+    await newEmployee.save();
+    res.status(201).json(newEmployee);
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 // Get all employees
 router.get('/employees', async (req, res) => {
   try {
@@ -31,7 +50,7 @@ router.get('/employees/by-date', async (req, res) => {
     });
 
     res.json(employees);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
 });
