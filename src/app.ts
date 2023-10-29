@@ -5,13 +5,13 @@ import express from 'express';
 // Routes
 import employeeRoutes from './routes/employees';
 
+// Create Express server
+export const app = express();
+const PORT = process.env.PORT || 3000;
+
 const startServer = async () => {
   // Connect to database
   await db;
-
-  // Create Express server
-  const app = express();
-  const PORT = process.env.PORT || 3000;
 
   app.use(express.json());
 
