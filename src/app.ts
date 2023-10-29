@@ -15,6 +15,7 @@ const startServer = async () => {
 
   app.use(express.json());
 
+  // Home route
   app.get('/', (req, res) => {
     res.send('Hello, World!');
   });
