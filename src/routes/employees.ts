@@ -108,7 +108,9 @@ router.post('/:id/check-out', async (req, res) => {
     }
 
     // TODO: Calculate hours worked
-    const hoursWorked = 5;
+    const duration =
+      (employee.checkOutTime.getTime() - employee.checkInTime.getTime()) / 1000;
+    const hoursWorked = duration / 3600;
 
     await employee.save();
     res.json({ ...employee.toObject(), hoursWorked });
