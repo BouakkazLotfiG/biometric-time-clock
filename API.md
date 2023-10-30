@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document provides comprehensive documentation for the Biometric Time Clock API, which allows for managing employees and their check-in/check-out times .
+This document provides comprehensive documentation for the Biometric Time Clock API, which allows for managing employees and their check-in/check-out times.
 
 ---
 
