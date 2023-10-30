@@ -22,7 +22,16 @@ Follow these steps to get the application up and running with Docker:
 
    ```
 
-2. **Run with docker**:
+2. **Add env file**:
+
+   ```sh
+   MONGODB_URI=mongodb+srv://lotfi:lotfi@clinquedev.131nom5.mongodb.net/
+   PORT=3000
+   ```
+
+   **_Displayed env values for demonstration purposes only_**
+
+3. **Run with docker**:
    ```sh
    docker run --env-file .env -p 3000:3000 bouakkazlotfi/biometric-time-clock:latest
    ```
