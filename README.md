@@ -45,7 +45,7 @@ Follow these steps to get the application up and running with Docker:
 
 ### Documentation
 
-For detailed information about the API endpoints, please refer to the [API Documentation](api.md).
+For detailed information about the API endpoints, please refer to the [API Documentation](API.md).
 
 ### Test using Postman API
 
