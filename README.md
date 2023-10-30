@@ -42,4 +42,8 @@ For detailed information about the API endpoints, please refer to the [API Docum
 
 ### Test using Postman API
 
-https://api.postman.com/collections/24269231-e76e3ee6-1f8d-4231-81f2-ecb5e2506488?access_key=PMAT-01HE02NKFQPSR6C3KPHZJHAJ7R
+1. **Open postman**: click on "Import" button and past the following link:
+
+   ```sh
+   https://api.postman.com/collections/24269231-e76e3ee6-1f8d-4231-81f2-ecb5e2506488?access_key=PMAT-01HE02NKFQPSR6C3KPHZJHAJ7R
+   ```
