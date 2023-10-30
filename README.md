@@ -35,3 +35,11 @@ Follow these steps to get the application up and running with Docker:
    ```sh
    docker run --env-file .env -p 3000:3000 bouakkazlotfi/biometric-time-clock:latest
    ```
+
+### Documentation
+
+For detailed information about the API endpoints, please refer to the [API Documentation](api.md).
+
+### Test using Postman API
+
+https://api.postman.com/collections/24269231-e76e3ee6-1f8d-4231-81f2-ecb5e2506488?access_key=PMAT-01HE02NKFQPSR6C3KPHZJHAJ7R
